@@ -212,7 +212,6 @@ function endOfGame() {
   timeDiff = new Number(timeDiff);
   bestTime = new Number(bestTime);
   if (timeDiff < bestTime) {
-    console.log("changed!");
     bestTime = timeDiff;
     timeDiff = 0;
     document.querySelector(".best-time").innerHTML = "Best Time: " + bestTime + "s";
