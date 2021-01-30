@@ -10,6 +10,8 @@ body {
   font-style: italic;
   margin-top: 1rem;
   padding: 1rem 1rem;
+  border-radius: 5px;
+  border-color: blue;
 }
 .buttons {
   display: flex;
@@ -33,6 +35,7 @@ body {
   font-style: italic;
   padding: 0.25rem 0.5rem;
   margin: 0.25rem 0rem;
+  border-radius: 5px;
 }
 .selected {
   background-color: blue;
