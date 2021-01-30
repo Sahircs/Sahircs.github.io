@@ -67,7 +67,9 @@ restartBtn.addEventListener("click", () => {
 // Generating New Maze
 let newMaze = document.querySelector(".new-maze");
 newMaze.addEventListener("click", () => {
-  resetGame();
+  if (resetTimer) {
+    resetGame();
+  }
 });
 
 // Changing Size
