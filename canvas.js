@@ -32,7 +32,7 @@ let fastSpeed = false;
 // *** EVENT-LISTENERS ***
 
 // Updating Time
-let time = document.querySelector(".time-elapsed");
+let updateTimer = document.querySelector(".time-elapsed");
 
 function startTimer() {
   timer = setInterval(() => {
@@ -42,7 +42,7 @@ function startTimer() {
     timeDiff /= 1000;
     // 1 decimal point
     timeDiff = timeDiff.toFixed(1);
-    time.innerHTML = "Time Elapsed: " + timeDiff + "s";
+    updateTimer.innerText = "Time Elapsed: " + timeDiff + "s";
   }, 0);
 }
 function stopTimer() {
