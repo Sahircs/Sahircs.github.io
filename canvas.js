@@ -2,13 +2,21 @@
 
 let cols, rows;
 const cellWidth = 20;
-let width = 580;
+let width = 700;
 let height = 440;
 let grid = [];
 
 let currentCell;
 let boundaries = [false, false, false, false];
 let gameEnded = false;
+
+// TIME
+let startTime;
+let currentTime;
+let timeDiff;
+let bestTime = Number.MAX_SAFE_INTEGER;
+let timer;
+let resetTimer = true;
 
 // SCORES
 let numOfMoves = 0;
@@ -23,6 +31,24 @@ let fastSpeed = false;
 
 // *** EVENT-LISTENERS ***
 
+// Updating Time
+let time = document.querySelector(".time-elapsed");
+
+function startTimer() {
+  timer = setInterval(() => {
+    currentTime = new Date();
+    timeDiff = currentTime - startTime;
+    // ms -> s
+    timeDiff /= 1000;
+    // 1 decimal point
+    timeDiff = timeDiff.toFixed(1);
+    time.innerHTML = "Time Elapsed: " + timeDiff + "s";
+  }, 0);
+}
+function stopTimer() {
+  window.clearInterval(timer);
+}
+
 // Restarting Game
 let restartBtn = document.querySelector(".restart-game");
 restartBtn.addEventListener("click", () => {
@@ -31,6 +57,11 @@ restartBtn.addEventListener("click", () => {
   document.querySelector(".restart-game").classList.toggle("restart-btn");
   document.querySelector(".restart-game").classList.toggle("restart");
   resetGame();
+  // Reset number of Moves
+  numOfMoves = 0;
+  document.querySelector(".moves").innerHTML = "Moves: " + numOfMoves;
+  // Reset Time Elapsed
+  document.querySelector(".time-elapsed").innerHTML = "Time Elapsed: 0s";
 });
 
 // Generating New Maze
@@ -39,7 +70,7 @@ newMaze.addEventListener("click", () => {
   resetGame();
 });
 
-// Chnaging Size
+// Changing Size
 let changeToSmall = document.querySelector(".small");
 let changeToLarge = document.querySelector(".large");
 
@@ -47,7 +78,7 @@ changeToSmall.addEventListener("click", () => {
   changeToSmall.classList.add("selected");
   changeToLarge.classList.remove("selected");
   if (!small) {
-    width = 580;
+    width = 700;
     height = 440;
     small = true;
     large = false;
@@ -149,6 +180,12 @@ function keyPressed() {
   } else if (keyCode == RIGHT_ARROW) {
     updateMovement(neighbours[3], 3, 1);
   }
+
+  if (resetTimer && !gameEnded) {
+    startTime = new Date();
+    startTimer();
+    resetTimer = false;
+  }
 }
 
 function updateMovement(nextCell, wallIndex, nextWallIndex) {
@@ -163,15 +200,23 @@ function updateMovement(nextCell, wallIndex, nextWallIndex) {
 
 function endOfGame() {
   // Update Best Score
+  gameEnded = true;
   if (numOfMoves < bestScore) {
     bestScore = numOfMoves;
     document.querySelector(".best-score").innerHTML =
       "Best Score: " + bestScore;
   }
-  // Reset number of Moves
-  numOfMoves = 0;
-  document.querySelector(".moves").innerHTML = "Moves: " + numOfMoves;
-  gameEnded = true;
+  // Update Time
+  stopTimer();
+  resetTimer = true;
+  timeDiff = new Number(timeDiff);
+  bestTime = new Number(bestTime);
+  if (timeDiff < bestTime) {
+    console.log("changed!");
+    bestTime = timeDiff;
+    timeDiff = 0;
+    document.querySelector(".best-time").innerHTML = "Best Time: " + bestTime + "s";
+  }
   // Display congrats message + option to play again
   document.querySelector(".win").classList.toggle("congrats");
   document.querySelector(".win").classList.toggle("congrats-div");
@@ -192,7 +237,6 @@ function resetGame() {
       cell.visited = false;
       cell.walls = [true, true, true, true];
       currentCell = grid[floor(grid.length / 2)][floor(grid[0].length / 2)];
-      gameEnded = false;
     }
   }
   for (let i = 0; i < cols; i++) {
@@ -200,4 +244,5 @@ function resetGame() {
       grid[i][j].updateWalls();
     }
   }
+  gameEnded = false;
 }
