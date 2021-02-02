@@ -1,8 +1,8 @@
-# Maze-Game
+# Maze-Game (https://sahircs.github.io/)
 
 <br>
 
- # GAME LINK - https://sahircs.github.io/ 
+ GAME LINK - https://sahircs.github.io/ 
 
 <br/>
 
