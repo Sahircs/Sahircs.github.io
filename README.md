@@ -1,11 +1,5 @@
 # Maze-Game (https://sahircs.github.io/)
 
-<br>
-
- GAME LINK - https://sahircs.github.io/ 
-
-<br/>
-
 # Description of Game and how to play 
 
 - Click the "Generate New Maze" to generate a new maze at random
