@@ -1,9 +1,8 @@
 # Maze-Game
 
-
 <br>
 
-GAME LINK - https://sahircs.github.io/ 
+ **GAME LINK - https://sahircs.github.io/ 
 
 <br/>
 
@@ -18,18 +17,16 @@ GAME LINK - https://sahircs.github.io/
 
 <br/>
 
+# How to run game locally on your Computer
 
-How to run game locally on your Computer
-------------------------------------------------
 - Download Code and open in a Code Editor (Visual Studio Code)
 - Install 'Live Server' Extension (if using VS Code)
 - Run with Live Server + Enjoy!
 
-
 <br/>
 
-Technologies Used
-------------------
+# Technologies Used
+
 - JavaScript + P5.js
 - HTML
 - CSS
