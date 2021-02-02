@@ -1,6 +1,6 @@
 # Maze-Game (https://sahircs.github.io/)
 
-# Description of Game and how to play 
+Description of Game and how to play: 
 
 - Click the "Generate New Maze" to generate a new maze at random
 - Move the player using the up/left/down/right arrows
