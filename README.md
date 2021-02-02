@@ -7,8 +7,8 @@ GAME LINK - https://sahircs.github.io/
 
 <br/>
 
-Description of Game and how to play 
----------------------------------------------
+# Description of Game and how to play 
+
 - Click the "Generate New Maze" to generate a new maze at random
 - Move the player using the up/left/down/right arrows
 - Change Size and Speed of Maze using the relevant buttons
